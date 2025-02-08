@@ -1,0 +1,33 @@
+import numpy as np
+
+# Contoh input baru (sesuaikan dengan fitur yang diperlukan)
+# Format: [Tinggi (cm), Berat (kg), Durasi (menit), Kalori Terbakar, Umur, 'Tingkat Aktivitas', 'Tujuan', 'Kategori', 'Jenis Kelamin']
+new_input = pd.DataFrame([{
+    'Tinggi (cm)': 170,
+    'Berat (kg)': 65,
+    'Durasi (menit)': 45,
+    'Kalori Terbakar': 350,
+    'Umur': 25,
+    'Tingkat Aktivitas': 'Sedang',
+    'Tujuan': 'Pemeliharaan Kebugaran',
+    'Kategori': 'Kardio',
+    'Jenis Kelamin': 'Pria'
+}])
+
+# Preprocessing input
+# Encoding fitur kategorikal
+new_input_encoded = pd.get_dummies(new_input[categorical_features])
+missing_cols = set(X_encoded.columns) - set(new_input_encoded.columns)
+for col in missing_cols:
+    new_input_encoded[col] = 0  # Menambahkan kolom yang hilang (karena one-hot encoding)
+new_input_encoded = new_input_encoded[X_encoded.columns]  # Menyesuaikan urutan kolom
+
+# Normalisasi fitur numerik
+new_input_combined = new_input[numeric_features].copy()
+new_input_combined[numeric_features] = scaler.transform(new_input_combined[numeric_features])
+new_input_combined = pd.concat([new_input_combined, new_input_encoded], axis=1)
+
+# Prediksi dengan model
+prediction = model.predict(new_input_combined)
+predicted_class = label_encoder.inverse_transform([np.argmax(prediction)])
+print(f'Rekomendasi Olahraga: {predicted_class[0]}')

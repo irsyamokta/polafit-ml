@@ -1,0 +1,25 @@
+Inputan Keterangan
+Tinggi (cm): 140 - 200 cm
+Berat (kg): 40 - 120 kg
+Durasi (menit): 30 - 90 menit
+Kalori Terbakar: 150 - 700 kalori
+Umur: 18 - 65 tahun
+
+Tingkat Aktivitas
+Rendah
+Sedang
+Tinggi
+
+Tujuan
+Pemeliharaan Kebugaran
+Peningkatan Massa Otot
+Penurunan Berat Badan
+
+Kategori
+Fleksibilitas
+Kardio
+Kekuatan
+
+Jenis Kelamin
+Pria
+Wanita
