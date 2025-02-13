@@ -22,15 +22,15 @@ UPLOAD_DIR = 'uploads'
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class UserInput(BaseModel):
-    tinggi: float
-    berat: float
-    durasi: float
-    kalori_terbakar: float
-    umur: float
-    tingkat_aktivitas: str
-    tujuan: str
-    kategori: str
-    jenis_kelamin: str
+    height: float
+    weight: float
+    duration: float
+    calori: float
+    age: float
+    activity: str
+    goal: str
+    category: str
+    gender: str
 
 @app.post("/predict_food")
 async def predict(file: UploadFile = File(...)):
@@ -49,15 +49,15 @@ async def predict(file: UploadFile = File(...)):
 @app.post("/predict_exercise")
 def recommend_exercise_endpoint(user_input: UserInput):
     input_data = pd.DataFrame([{
-        'Tinggi (cm)': user_input.tinggi,
-        'Berat (kg)': user_input.berat,
-        'Durasi (menit)': user_input.durasi,
-        'Kalori Terbakar': user_input.kalori_terbakar,
-        'Umur': user_input.umur,
-        'Tingkat Aktivitas': user_input.tingkat_aktivitas,
-        'Tujuan': user_input.tujuan,
-        'Kategori': user_input.kategori,
-        'Jenis Kelamin': user_input.jenis_kelamin
+        'Tinggi (cm)': user_input.height,
+        'Berat (kg)': user_input.weight,
+        'Durasi (menit)': user_input.duration,
+        'Kalori Terbakar': user_input.calori,
+        'Umur': user_input.age,
+        'Tingkat Aktivitas': user_input.activity,
+        'Tujuan': user_input.goal,
+        'Kategori': user_input.category,
+        'Jenis Kelamin': user_input.gender
     }])
 
     recommended_exercise = predict_exercise(input_data)
